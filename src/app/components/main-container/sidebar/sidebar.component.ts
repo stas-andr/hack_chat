@@ -11,7 +11,14 @@ import {Subscription} from 'rxjs';
 })
 export class SidebarComponent implements OnInit, OnDestroy {
   randomSeed: any[] = [];
-  roomData: RoomData[] = [];
+  roomData: RoomData[] = [
+    {name: "Степанов Василий Семенович", id: "1"},
+    {name: "Николаев Федор Михайлович", id: "2"},
+    {name: "Бритик Олег Николаевич>", id: "3"},
+    {name: "Бананов Виктор Вадимович", id: "2"},
+    {name: "Люлекина Светлана Дмитриевна", id: "2"},
+
+  ];
   lastMessage: string = "";
   subs: Subscription[] = [];
   @Output() seedValue: EventEmitter<string> = new EventEmitter<string>();
