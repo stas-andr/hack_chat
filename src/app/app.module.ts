@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import {APP_INITIALIZER, NgModule} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import {MaterialModule} from './shared/material.module';
 import { AppRoutingModule } from './app-routing.module';
@@ -11,6 +11,8 @@ import {SidebarContentComponent} from './components/main-container/sidebar/sideb
 import {ChatAreaComponent} from './components/main-container/chat-area/chat-area.component';
 import {ChatDefaultPageComponent} from './components/main-container/chat-area/chat-default-page/chat-default-page.component';
 import {ChatRoomComponent} from './components/main-container/chat-area/chat-room/chat-room.component';
+import {KeycloakAngularModule, KeycloakService} from "keycloak-angular";
+import {initializeKeycloak} from "./utility/app.init";
 
 @NgModule({
   declarations: [
@@ -25,11 +27,19 @@ import {ChatRoomComponent} from './components/main-container/chat-area/chat-room
   imports: [
     BrowserModule,
     AppRoutingModule,
+    KeycloakAngularModule,
     BrowserAnimationsModule,
     MaterialModule,
     FormsModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: APP_INITIALIZER,
+      useFactory: initializeKeycloak,
+      multi: true,
+      deps: [KeycloakService],
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
