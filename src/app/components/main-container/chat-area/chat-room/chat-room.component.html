@@ -2,14 +2,14 @@
 <div class="chat__area">
   <ng-container *ngIf="1 === 1; else noData">
 <!--    stas_test-->
-    <div *ngFor="let m of messageData"
+    <div *ngFor="let m of messages"
          [ngClass]="{
      'chat__area__message-owner': 1 === 1
     }"
          class="chat__area__message">
       <span class="chat__area__message__name">{{ m?.name }}</span>
       <span class="chat__area__message__text">{{ m.message }}</span>
-      <span class="chat__area__message__time">{{ m?.time?.seconds * 1000 | date:'mediumTime' }}</span>
+      <span class="chat__area__message__time">{{ m?.time?.getDate()}}</span>
     </div>
   </ng-container>
 

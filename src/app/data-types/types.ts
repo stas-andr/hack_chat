@@ -1,17 +1,16 @@
-import * as url from "url";
 
 export class User {
   id: number | undefined;
   name: string | undefined;
   // @ts-ignore
-  avatar: url;
+  avatar: URL;
   friends?: User[]
 }
 
 export class Message {
-  sender: User | undefined;
-  content: any;
-  date: Date | undefined;
+  name: User | undefined;
+  message: any;
+  time: Date | undefined;
 }
 
 export class Messages {
