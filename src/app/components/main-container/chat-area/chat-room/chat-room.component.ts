@@ -41,9 +41,10 @@ export class ChatRoomComponent {
   }
 
   private getMessagesForIdChat(id_chat: number) {
-    this.messagesService.getMessagesForId(id_chat).subscribe(data => {
+    this.messagesService.getMessagesForId(id_chat) //TODO
+      .subscribe(data => {
       this.messages = data
-      //console.log(this.messages) //TODO
+      //console.log(this.messages)
     }, error => console.log(error)
     )
   }
