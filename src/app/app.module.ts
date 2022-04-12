@@ -12,7 +12,7 @@ import {ChatAreaComponent} from './components/main-container/chat-area/chat-area
 import {ChatDefaultPageComponent} from './components/main-container/chat-area/chat-default-page/chat-default-page.component';
 import {ChatRoomComponent} from './components/main-container/chat-area/chat-room/chat-room.component';
 import {KeycloakAngularModule, KeycloakService} from "keycloak-angular";
-import {initializeKeycloak} from "./utility/app.init";
+// import {initializeKeycloak} from "./utility/app.init";
 
 @NgModule({
   declarations: [
@@ -32,14 +32,14 @@ import {initializeKeycloak} from "./utility/app.init";
     MaterialModule,
     FormsModule
   ],
-  providers: [
-    {
-      provide: APP_INITIALIZER,
-      useFactory: initializeKeycloak,
-      multi: true,
-      deps: [KeycloakService],
-    }
-  ],
+  // providers: [
+  //   {
+  //     provide: APP_INITIALIZER,
+  //     useFactory: initializeKeycloak,
+  //     multi: true,
+  //     deps: [KeycloakService],
+  //   }
+  // ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
