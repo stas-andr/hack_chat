@@ -13,11 +13,7 @@ import {Message, User} from "../../../../services/common.service";
 export class ChatRoomComponent {
   subs: Subscription[] = [];
   item! : any;
-  isUser: User = {
-    name: "Это я",
-    id: 1,
-    avatar: new URL('myurl')
-  };
+  isUser: undefined
   messages: Message[] = [
     {
       sender: { name: 'Иванов Владислав', id: 1, avatar: new URL('https://www.w3schools.com/howto/img_avatar.png')},
@@ -36,8 +32,11 @@ export class ChatRoomComponent {
       .pipe(
         map(paramMap => paramMap.get('id'))
       )
-      .subscribe(routePathParam => this.commonService.updatePathParamState(routePathParam)));
-
+      .subscribe(routePathParam =>
+      {
+        this.commonService.updatePathParamState(routePathParam)
+        console.log(routePathParam)
+      }));
   }
 
   @Output() chatData: EventEmitter<any> = new EventEmitter<any>();

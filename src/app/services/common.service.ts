@@ -27,6 +27,7 @@ export class CommonService {
   }
 
   updatePathParamState(newPathParam: string | null): void {
+    console.log(newPathParam)
     if (newPathParam != null) {
       this.pathParamState.next(newPathParam);
     }

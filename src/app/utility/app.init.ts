@@ -4,7 +4,7 @@ export function initializeKeycloak(keycloak: KeycloakService): () => Promise<boo
   return () =>
     keycloak.init({
       config: {
-        url: 'https://51.250.102.62:8180/auth/', //10.17.0.140:8080
+        url: 'http://51.250.102.62:8180/auth/', //10.17.0.140:8080
         realm: 'quarkus',
         clientId: 'angular-web-client'
       },
