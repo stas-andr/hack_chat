@@ -13,7 +13,7 @@ import {ChatDefaultPageComponent} from './components/main-container/chat-area/ch
 import {ChatRoomComponent} from './components/main-container/chat-area/chat-room/chat-room.component';
 import {KeycloakAngularModule, KeycloakService} from "keycloak-angular";
 import {HttpClientModule} from "@angular/common/http";
-// import {initializeKeycloak} from "./utility/app.init";
+import {initializeKeycloak} from "./utility/app.init";
 
 @NgModule({
   declarations: [
@@ -34,14 +34,14 @@ import {HttpClientModule} from "@angular/common/http";
     FormsModule,
     HttpClientModule
   ],
-  // providers: [
-  //   {
-  //     provide: APP_INITIALIZER,
-  //     useFactory: initializeKeycloak,
-  //     multi: true,
-  //     deps: [KeycloakService],
-  //   }
-  // ],
+  providers: [
+    {
+      provide: APP_INITIALIZER,
+      useFactory: initializeKeycloak,
+      multi: true,
+      deps: [KeycloakService],
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

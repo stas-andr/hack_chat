@@ -8,6 +8,7 @@ const routes: Routes = [
   {
     path: '',
     component: MainContainerComponent,
+    canActivate: [AuthGuard],
     children: [
       {
         path: 'room/:id',
