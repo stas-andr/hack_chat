@@ -50,7 +50,6 @@ export class SidebarComponent implements OnInit, OnDestroy {
   private getChatList() {
     this.chatsService.getCardList().subscribe(data => {
         this.chats = data;
-        console.log(data);
       }, error => console.log(error)
     );
   }

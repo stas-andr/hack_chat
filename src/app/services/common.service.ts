@@ -11,13 +11,16 @@ export class CommonService {
   // 2. Storing the route param value, room/:id -> id value
 
   private pathParamState = new BehaviorSubject<string>('');
+  private baseURL = "http://10.17.0.218:8080/api/v1";
   pathParam: Observable<string>;
-
 
   constructor(private router: Router) {
     this.pathParam = this.pathParamState.asObservable();
   }
 
+  public getBaseUrl() {
+    return this.baseURL
+  }
   loginWithGoogle(): void {
 
   }
@@ -27,7 +30,6 @@ export class CommonService {
   }
 
   updatePathParamState(newPathParam: string | null): void {
-    console.log(newPathParam)
     if (newPathParam != null) {
       this.pathParamState.next(newPathParam);
     }

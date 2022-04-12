@@ -21,7 +21,6 @@ export class ChatAreaComponent implements OnInit {
   ngOnInit(): void {
     this.subs = this.commonService.pathParam.subscribe(value => {
       this.paramValue = value;
-      console.log(this.paramValue);
     });
   }
 
@@ -35,6 +34,6 @@ export class ChatAreaComponent implements OnInit {
   }
 
   chatData(ev: any) :void {
-    console.log("chatData")
+    //TODO
   }
 }

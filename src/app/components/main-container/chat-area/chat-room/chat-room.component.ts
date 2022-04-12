@@ -4,6 +4,7 @@ import {ActivatedRoute} from '@angular/router';
 import {map} from 'rxjs/operators';
 import {Subscription} from 'rxjs';
 import {Message, User} from "../../../../services/common.service";
+import {MessagesService} from "../../../../services/messages.service";
 
 @Component({
   selector: 'app-chat-room',
@@ -20,11 +21,12 @@ export class ChatRoomComponent {
       message: 'Привет, как дела?',
       time: new Date()
     }
-  ]
-  ;
+  ];
 
   constructor(private commonService: CommonService,
+              private messagesService: MessagesService,
               private route: ActivatedRoute) {
+    this.getMessagesForIdChat(1)
   }
 
   ngOnInit(): void {
@@ -35,8 +37,15 @@ export class ChatRoomComponent {
       .subscribe(routePathParam =>
       {
         this.commonService.updatePathParamState(routePathParam)
-        console.log(routePathParam)
       }));
+  }
+
+  private getMessagesForIdChat(id_chat: number) {
+    this.messagesService.getMessagesForId(id_chat).subscribe(data => {
+      this.messages = data
+      //console.log(this.messages) //TODO
+    }, error => console.log(error)
+    )
   }
 
   @Output() chatData: EventEmitter<any> = new EventEmitter<any>();
