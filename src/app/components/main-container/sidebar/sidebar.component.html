@@ -38,8 +38,8 @@
 
 
   <div class="sidebar__content">
-    <ng-container *ngFor="let r of roomData; let i=index">
-      <app-sidebar-content [roomData]="r" [randomSeed]="randomSeed[i]" (seedValue)="seedData($event)"></app-sidebar-content>
+    <ng-container *ngFor="let r of chats; let i=index">
+      <app-sidebar-content [chatData] ="r" [randomSeed]="randomSeed[i]" (seedValue)="seedData($event)"></app-sidebar-content>
     </ng-container>
   </div>
 

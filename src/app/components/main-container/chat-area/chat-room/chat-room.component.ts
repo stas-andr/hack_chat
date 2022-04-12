@@ -3,7 +3,7 @@ import {CommonService} from '../../../../services/common.service';
 import {ActivatedRoute} from '@angular/router';
 import {map} from 'rxjs/operators';
 import {Subscription} from 'rxjs';
-import {Message} from "../../../../data-types/types";
+import {Message, User} from "../../../../services/common.service";
 
 @Component({
   selector: 'app-chat-room',
@@ -13,9 +13,14 @@ import {Message} from "../../../../data-types/types";
 export class ChatRoomComponent {
   subs: Subscription[] = [];
   item! : any;
+  isUser: User = {
+    name: "Это я",
+    id: 1,
+    avatar: new URL('myurl')
+  };
   messages: Message[] = [
     {
-      name: { name: 'Иванов Владислав', id: 1, avatar: new URL('https://www.w3schools.com/howto/img_avatar.png')},
+      sender: { name: 'Иванов Владислав', id: 1, avatar: new URL('https://www.w3schools.com/howto/img_avatar.png')},
       message: 'Привет, как дела?',
       time: new Date()
     }

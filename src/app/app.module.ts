@@ -12,6 +12,7 @@ import {ChatAreaComponent} from './components/main-container/chat-area/chat-area
 import {ChatDefaultPageComponent} from './components/main-container/chat-area/chat-default-page/chat-default-page.component';
 import {ChatRoomComponent} from './components/main-container/chat-area/chat-room/chat-room.component';
 import {KeycloakAngularModule, KeycloakService} from "keycloak-angular";
+import {HttpClientModule} from "@angular/common/http";
 // import {initializeKeycloak} from "./utility/app.init";
 
 @NgModule({
@@ -30,7 +31,8 @@ import {KeycloakAngularModule, KeycloakService} from "keycloak-angular";
     KeycloakAngularModule,
     BrowserAnimationsModule,
     MaterialModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   // providers: [
   //   {

@@ -39,3 +39,22 @@ export interface RoomData {
   name: string;
   id?: string;
 }
+
+export class User {
+  id: number | undefined;
+  name: string | undefined;
+  // @ts-ignore
+  avatar: URL;
+  friends?: User[]
+}
+
+export class Message {
+  sender: User | undefined;
+  message: any;
+  time: Date | undefined;
+}
+
+export interface Chat {
+  name: string;
+  id?: string;
+}

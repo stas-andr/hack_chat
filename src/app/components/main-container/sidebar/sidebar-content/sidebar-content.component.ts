@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {RoomData} from '../../../../services/common.service';
+import {Chat, RoomData} from '../../../../services/common.service';
 import {Subscription} from 'rxjs';
 
 @Component({
@@ -9,7 +9,7 @@ import {Subscription} from 'rxjs';
 })
 export class SidebarContentComponent implements OnInit {
 
-  @Input() roomData: RoomData = {name: "stas", id: "25"};
+  @Input() chatData: Chat = {name: "stas", id: "25"};
   @Input() randomSeed: string = "";
 
   @Output() seedValue: EventEmitter<string> = new EventEmitter<string>();
