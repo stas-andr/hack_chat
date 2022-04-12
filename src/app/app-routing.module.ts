@@ -4,8 +4,9 @@ import { MainContainerComponent } from "./components/main-container/main-contain
 import {AuthGuard} from "./utility/app.guard";
 
 const routes: Routes = [
-  { path: '', component: MainContainerComponent, canActivate: [AuthGuard] },
-  { path: '**', redirectTo: ''}
+  { path: '', component: MainContainerComponent},
+  // { path: '', component: MainContainerComponent, canActivate: [AuthGuard] },
+  // { path: '**', redirectTo: ''}
 ];
 
 @NgModule({
