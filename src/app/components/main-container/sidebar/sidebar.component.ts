@@ -16,7 +16,7 @@ import {KeycloakService} from "keycloak-angular";
 })
 export class SidebarComponent implements OnInit, OnDestroy {
   randomSeed: any[] = [];
-  chats: Chats;
+  chats: Chats = new Chats();
 
   lastMessage: string = "";
   subs: Subscription[] = [];
