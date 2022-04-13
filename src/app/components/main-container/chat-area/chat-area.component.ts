@@ -34,6 +34,9 @@ export class ChatAreaComponent implements OnInit {
   }
 
   chatData(ev: any) :void {
-    //TODO
+    console.log('activated chatData');
+    if (ev.chatData !== undefined) {
+      ev.chatData.subscribe((roomName: string) => this.roomName = roomName);
+    }
   }
 }

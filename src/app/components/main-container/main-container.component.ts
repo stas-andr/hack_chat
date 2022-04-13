@@ -12,6 +12,7 @@ export class MainContainerComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    console.log('main-container onInit')
   }
 
   seedData(ev: string): void {

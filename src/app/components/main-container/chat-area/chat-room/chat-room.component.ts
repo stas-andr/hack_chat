@@ -39,7 +39,6 @@ export class ChatRoomComponent {
   private getMessagesForIdChat(id_chat: number) {
     this.messagesService.getMessagesForId(id_chat) //TODO
       .subscribe(data => {
-        console.log(data)
         for (let i = 0; i < data.length; i++)
         {
           let dictMessage = data[i]
