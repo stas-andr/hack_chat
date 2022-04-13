@@ -4,6 +4,7 @@ import {Chat, CommonService, RoomData} from '../../../services/common.service';
 import {map, tap} from 'rxjs/operators';
 import {Subscription} from 'rxjs';
 import {ChatsService} from "../../../services/chats.service";
+import {KeycloakService} from "keycloak-angular";
 
 @Component({
   selector: 'app-sidebar',
@@ -25,16 +26,19 @@ export class SidebarComponent implements OnInit, OnDestroy {
 
   lastMessage: string = "";
   subs: Subscription[] = [];
+  loggedUserName = ""
   @Output() seedValue: EventEmitter<string> = new EventEmitter<string>();
 
   constructor(private commonService: CommonService,
-              private chatsService: ChatsService) {
+              private chatsService: ChatsService,
+              private keycloakService: KeycloakService) {
     this.getChatList()
   }
 
   ngOnInit(): void {
 
     // Generate 20 random values and store it in the randomSeed array
+    this.loggedUserName = this.keycloakService.getUsername();
     this.randomSeed = Array.from({length: 20}, () => Math.floor(Math.random() * 14578976));
   }
 

@@ -52,9 +52,9 @@ export class User {
 }
 
 export class Message {
-  sender: User | undefined;
+  sender: string | undefined;
   message: any;
-  time: Date | undefined;
+  date: string | undefined
 }
 
 export interface Chat {
