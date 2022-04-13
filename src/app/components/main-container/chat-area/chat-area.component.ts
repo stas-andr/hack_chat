@@ -4,6 +4,7 @@ import {CommonService, Message} from '../../../services/common.service';
 import {Subscription} from 'rxjs';
 import {MessagesService} from "../../../services/messages.service";
 import {MessageData} from "../../../Types/MessageData";
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -19,7 +20,8 @@ export class ChatAreaComponent implements OnInit {
   chatId: number;
 
   constructor(private commonService: CommonService,
-              private messagesService: MessagesService) {
+              private messagesService: MessagesService,
+              private router: Router) {
   }
 
 
@@ -46,7 +48,7 @@ export class ChatAreaComponent implements OnInit {
     this.messagesService.sendMessage(+(this.paramValue), this.message_data).subscribe(
       data => {
         console.log(data)
-
+        this.router.navigate([`room/${this.paramValue}`]);
       },
       error => console.log(error)
     );
