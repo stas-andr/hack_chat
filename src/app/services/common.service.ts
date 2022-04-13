@@ -54,7 +54,7 @@ export class User {
 export class Message {
   sender: string | undefined;
   message: any;
-  date: string | undefined
+  timestamp: string | undefined
 }
 
 export class Chat {

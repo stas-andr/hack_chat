@@ -39,7 +39,6 @@ export class ChatRoomComponent {
 
     this.subs.push(
       this.route.params.subscribe(par => {
-          console.log('update messages')
           this.messages = []
           this.getMessagesForIdChat(par['id'])
       }
@@ -53,7 +52,7 @@ export class ChatRoomComponent {
         {
           let dictMessage = data[i]
           // @ts-ignore
-          this.messages.push({sender: dictMessage['creator'], message: dictMessage['text'], time: dictMessage['time_stamp']})
+          this.messages.push({sender: dictMessage['creator'], message: dictMessage['text'], timestamp: dictMessage['time_stamp']})
         }
     }, error => console.log(error)
     )

@@ -12,6 +12,12 @@ export class MessagesService {
               private commonServese: CommonService) { }
 
   getMessagesForId(id_chat: number): Observable<Message[]> {
+    console.log(`${this.commonServese.getBaseUrl()}/chats/${id_chat}`)
     return this.httpClient.get<Message[]>(`${this.commonServese.getBaseUrl()}/chats/${id_chat}`)
-}
+  }
+
+  sendMessage(id_chat: number, message: Message): Observable<Object> {
+    console.log(`${this.commonServese.getBaseUrl()}/chats/${id_chat}/send`)
+    return this.httpClient.post(`${this.commonServese.getBaseUrl()}/chats/${id_chat}/send`, message);
+  }
 }

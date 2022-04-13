@@ -63,6 +63,6 @@ export class SidebarComponent implements OnInit, OnDestroy {
   }
 
   logout(): void {
-    this.commonService.logout();
+    this.keycloakService.logout()
   }
 }
