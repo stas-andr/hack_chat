@@ -23,7 +23,7 @@ export class ChatAreaComponent implements OnInit {
   }
 
 
-  message_data: MessageData = new Message();
+  message_data: MessageData = new MessageData();
 
   ngOnInit(): void {
     this.subs = this.commonService.pathParam.subscribe(value => {
@@ -40,7 +40,7 @@ export class ChatAreaComponent implements OnInit {
 
     const {message} = form.value;
 
-    this.message_data.message = message;
+    this.message_data.text = message;
     this.message_data.timeStamp = new Date();
 
     this.messagesService.sendMessage(+(this.paramValue), this.message_data).subscribe(

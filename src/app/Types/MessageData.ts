@@ -1,6 +1,6 @@
 
 export class MessageData{
-  message: string;
+  text: string;
   timeStamp: Date;
 
 }
