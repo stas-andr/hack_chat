@@ -9,10 +9,9 @@
          class="chat__area__message">
       <span class="chat__area__message__name">{{ m?.sender }}</span>
       <span class="chat__area__message__text">{{ m?.message }}</span>
-      <span class="chat__area__message__time">{{ m?.timestamp | date }}</span>
+      <span class="chat__area__message__time">{{ m?.timeStamp | date }}</span>
     </div>
   </ng-container>
-
 
   <ng-template #noData>
     <h1 style="text-align: center">No Messages</h1>

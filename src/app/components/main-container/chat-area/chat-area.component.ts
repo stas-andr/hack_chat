@@ -1,8 +1,9 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {NgForm} from '@angular/forms';
-import {CommonService} from '../../../services/common.service';
+import {CommonService, Message} from '../../../services/common.service';
 import {Subscription} from 'rxjs';
 import {MessagesService} from "../../../services/messages.service";
+import {MessageData} from "../../../Types/MessageData";
 
 
 @Component({
@@ -21,9 +22,12 @@ export class ChatAreaComponent implements OnInit {
               private messagesService: MessagesService) {
   }
 
+
+  message_data: MessageData = new Message();
+
   ngOnInit(): void {
     this.subs = this.commonService.pathParam.subscribe(value => {
-      console.log('chat-area.component',this.paramValue)
+      console.log('chat-area.component', this.paramValue)
       this.paramValue = value;
     });
   }
@@ -35,11 +39,23 @@ export class ChatAreaComponent implements OnInit {
     console.log('formSubmitting')
 
     const {message} = form.value;
-    this.messagesService.sendMessage(+(this.paramValue), message)
+
+    this.message_data.message = message;
+    this.message_data.timeStamp = new Date();
+
+    this.messagesService.sendMessage(+(this.paramValue), this.message_data).subscribe(
+      data => {
+        console.log(data)
+
+      },
+      error => console.log(error)
+    );
+
+
     form.resetForm();
   }
 
-  chatData(ev: any) :void {
+  chatData(ev: any): void {
     console.log('activated chatData');
     if (ev.chatData !== undefined) {
       ev.chatData.subscribe((roomName: string) => this.roomName = roomName);

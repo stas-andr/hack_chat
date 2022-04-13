@@ -25,6 +25,7 @@ export class ChatRoomComponent {
               private route: ActivatedRoute) {
     // this.isUser = JSON.parse(localStorage.getItem('user')); //TODO
     this.getMessagesForIdChat(1)
+    // this.isUser = localStorage.getItem('user')
   }
 
   ngOnInit(): void {

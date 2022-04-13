@@ -53,8 +53,8 @@ export class User {
 
 export class Message {
   sender: string | undefined;
-  message: any;
-  timestamp: string | undefined
+  message: string;
+  timeStamp: Date;
 }
 
 export class Chat {

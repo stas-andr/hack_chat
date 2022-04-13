@@ -14,6 +14,7 @@ import {ChatRoomComponent} from './components/main-container/chat-area/chat-room
 import {KeycloakAngularModule, KeycloakService} from "keycloak-angular";
 import {HttpClientModule} from "@angular/common/http";
 import {initializeKeycloak} from "./utility/app.init";
+import {MatPaginatorModule} from "@angular/material/paginator";
 
 @NgModule({
   declarations: [
@@ -25,15 +26,16 @@ import {initializeKeycloak} from "./utility/app.init";
     ChatDefaultPageComponent,
     ChatRoomComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    KeycloakAngularModule,
-    BrowserAnimationsModule,
-    MaterialModule,
-    FormsModule,
-    HttpClientModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        KeycloakAngularModule,
+        BrowserAnimationsModule,
+        MaterialModule,
+        FormsModule,
+        HttpClientModule,
+        MatPaginatorModule
+    ],
   providers: [
     {
       provide: APP_INITIALIZER,
