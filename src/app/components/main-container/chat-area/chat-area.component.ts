@@ -29,8 +29,9 @@ export class ChatAreaComponent implements OnInit {
 
   ngOnInit(): void {
     this.subs = this.commonService.pathParam.subscribe(value => {
-      console.log('chat-area.component', this.paramValue)
       this.paramValue = value;
+      // @ts-ignore
+      this.roomName = localStorage.getItem('userName')
     });
   }
 
@@ -38,7 +39,6 @@ export class ChatAreaComponent implements OnInit {
     if (form.invalid) {
       return;
     }
-    console.log('formSubmitting')
 
     const {message} = form.value;
 
@@ -47,20 +47,19 @@ export class ChatAreaComponent implements OnInit {
 
     this.messagesService.sendMessage(+(this.paramValue), this.message_data).subscribe(
       data => {
-        console.log(data)
         this.router.navigate([`room/${this.paramValue}`]);
       },
       error => console.log(error)
     );
 
-
     form.resetForm();
   }
 
   chatData(ev: any): void {
-    console.log('activated chatData');
     if (ev.chatData !== undefined) {
-      ev.chatData.subscribe((roomName: string) => this.roomName = roomName);
+      ev.chatData.subscribe((roomName: string) => {
+        this.roomName = roomName
+      });
     }
   }
 }

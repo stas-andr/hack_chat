@@ -57,7 +57,7 @@ export class Message {
   timeStamp: Date;
 }
 
-export class Chat {
+export interface Chat {
   name: string;
   id?: number;
 }

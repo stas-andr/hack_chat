@@ -9,7 +9,7 @@ import {Subscription} from 'rxjs';
 })
 export class SidebarContentComponent implements OnInit {
 
-  @Input() chatData: Chat = {name: "stas", id: 25};
+  @Input() chatData: Chat;
   @Input() randomSeed: string = "";
 
   @Output() seedValue: EventEmitter<string> = new EventEmitter<string>();
