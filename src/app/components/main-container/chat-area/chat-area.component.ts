@@ -20,7 +20,6 @@ export class ChatAreaComponent implements OnInit {
 
   ngOnInit(): void {
     this.subs = this.commonService.pathParam.subscribe(value => {
-      this.paramValue = value;
     });
   }
 

@@ -18,6 +18,8 @@ export class ChatRoomComponent {
   isUser: undefined
   messages: Message[] = [];
 
+  @Output() chatData: EventEmitter<any> = new EventEmitter<any>();
+
   constructor(private commonService: CommonService,
               private messagesService: MessagesService,
               private route: ActivatedRoute) {
@@ -34,6 +36,14 @@ export class ChatRoomComponent {
       {
         this.commonService.updatePathParamState(routePathParam)
       }));
+
+    this.subs.push(
+      this.route.params.subscribe(par => {
+          console.log('update messages')
+          this.messages = []
+          this.getMessagesForIdChat(par['id'])
+      }
+      ));
   }
 
   private getMessagesForIdChat(id_chat: number) {
@@ -45,10 +55,7 @@ export class ChatRoomComponent {
           // @ts-ignore
           this.messages.push({sender: dictMessage['creator'], message: dictMessage['text'], time: dictMessage['time_stamp']})
         }
-        console.log(this.messages)
     }, error => console.log(error)
     )
   }
-
-  @Output() chatData: EventEmitter<any> = new EventEmitter<any>();
 }
