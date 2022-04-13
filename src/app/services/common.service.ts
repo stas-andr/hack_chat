@@ -38,7 +38,7 @@ export class CommonService {
 
 }
 
-export interface RoomData {
+export class RoomData {
   name: string;
   id?: string;
 }
@@ -57,7 +57,12 @@ export class Message {
   date: string | undefined
 }
 
-export interface Chat {
+export class Chat {
   name: string;
-  id?: string;
+  id?: number;
+}
+
+export class Chats {
+  user_name: string;
+  list: Chat[]
 }

@@ -2,7 +2,7 @@
   <div class="sidebar__header">
     <img alt="avatar"
          mat-card-avatar
-         src="">
+         src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTv1vgdYWHDUkyYYYxV4RV78Q4AHDtagK2GRQ&usqp=CAU">
     <div class="sidebar__header__icons">
       <button mat-icon-button>
         <mat-icon>donut_large</mat-icon>
@@ -38,10 +38,8 @@
 
 
   <div class="sidebar__content">
-    <ng-container *ngFor="let r of chats; let i=index">
+    <ng-container *ngFor="let r of chats.list; let i=index">
       <app-sidebar-content [chatData] ="r" [randomSeed]="randomSeed[i]" (seedValue)="seedData($event)"></app-sidebar-content>
     </ng-container>
   </div>
-
-
 </section>

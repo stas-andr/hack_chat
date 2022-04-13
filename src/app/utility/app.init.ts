@@ -12,6 +12,6 @@ export function initializeKeycloak(keycloak: KeycloakService): () => Promise<boo
         checkLoginIframe: true,
         checkLoginIframeInterval: 25
       },
-      loadUserProfileAtStartUp: true
+      // loadUserProfileAtStartUp: true
     });
 }
