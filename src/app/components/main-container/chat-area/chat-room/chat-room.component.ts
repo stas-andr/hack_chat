@@ -51,7 +51,6 @@ export class ChatRoomComponent {
         );
       }),
       this.route.params.subscribe(par => {
-          this.messages = []
           this.getMessagesForIdChat(par['id'])
       }
       ));
@@ -60,6 +59,7 @@ export class ChatRoomComponent {
   private getMessagesForIdChat(id_chat: number) {
     this.messagesService.getMessagesForId(id_chat) //TODO
       .subscribe(data => {
+        this.messages = []
         for (let i = 0; i < data.length; i++)
         {
           let dictMessage = data[i]
