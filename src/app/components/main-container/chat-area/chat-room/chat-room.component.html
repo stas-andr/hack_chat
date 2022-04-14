@@ -4,7 +4,7 @@
 <!--    stas_test-->
     <div *ngFor="let m of messages"
          [ngClass]="{
-     'chat__area__message-owner': m.sender === 'stas'
+     'chat__area__message-owner': m.sender === isUser
     }"
          class="chat__area__message">
       <span class="chat__area__message__name">{{ m?.sender }}</span>

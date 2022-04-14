@@ -15,7 +15,7 @@ import {getMatIconFailedToSanitizeLiteralError} from "@angular/material/icon";
 export class ChatRoomComponent {
   subs: Subscription[] = [];
   item! : any;
-  isUser: undefined
+  isUser: string;
   messages: Message[] = [];
 
   @Output() chatData: EventEmitter<any> = new EventEmitter<any>();
@@ -25,7 +25,9 @@ export class ChatRoomComponent {
               private route: ActivatedRoute) {
     // this.isUser = JSON.parse(localStorage.getItem('user')); //TODO
     this.getMessagesForIdChat(1)
-    // this.isUser = localStorage.getItem('user')
+    // @ts-ignore
+    this.isUser = localStorage.getItem('userName')
+    console.log(this.isUser)
   }
 
   ngOnInit(): void {
