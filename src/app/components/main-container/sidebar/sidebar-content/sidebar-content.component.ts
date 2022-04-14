@@ -21,13 +21,10 @@ export class SidebarContentComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.lastMessage = 'I am last message'
   }
 
   onClick(): void {
     this.seedValue.emit(this.randomSeed);
-    console.log('emit onClick sidebar-content')
-    console.log(this.chatData.name)
     localStorage.setItem('chatName', this.chatData.name)
   }
 }

@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {NgForm} from '@angular/forms';
 import {CommonService, Message} from '../../../services/common.service';
 import {Subscription} from 'rxjs';
@@ -18,6 +18,8 @@ export class ChatAreaComponent implements OnInit{
   paramValue: string = "";
   roomName: string | undefined;
   chatId: number;
+
+  @Output() sendMess: EventEmitter<Message> = new EventEmitter<Message>();
 
   constructor(private commonService: CommonService,
               private messagesService: MessagesService,
@@ -46,7 +48,8 @@ export class ChatAreaComponent implements OnInit{
 
     this.messagesService.sendMessage(+(this.paramValue), this.message_data).subscribe(
       data => {
-        this.router.navigate([`room/${this.paramValue}`]);
+        this.router.navigate(['/room/2']);
+        this.router.navigate(['/room/' + this.paramValue]);
       },
       error => console.log(error)
     );

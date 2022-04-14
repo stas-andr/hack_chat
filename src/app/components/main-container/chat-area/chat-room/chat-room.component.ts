@@ -52,7 +52,8 @@ export class ChatRoomComponent {
       this.route.params.subscribe(par => {
           this.getMessagesForIdChat(par['id'])
       }
-      ));
+      ),
+      );
   }
 
   private getMessagesForIdChat(id_chat: number) {
