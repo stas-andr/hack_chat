@@ -29,7 +29,6 @@ export class ChatRoomComponent {
     this.getMessagesForIdChat(1)
     // @ts-ignore
     this.isUser = localStorage.getItem('userName')
-    console.log(this.isUser)
   }
 
   ngOnInit(): void {
