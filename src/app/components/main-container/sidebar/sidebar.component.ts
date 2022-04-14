@@ -60,6 +60,7 @@ export class SidebarComponent implements OnInit, OnDestroy {
 
   seedData(ev: string): void {
     this.seedValue.emit(ev);
+    console.log('emit sidebar event')
   }
 
   logout(): void {

@@ -12,16 +12,16 @@ import {Router} from "@angular/router";
   templateUrl: './chat-area.component.html',
   styleUrls: ['./chat-area.component.scss']
 })
-export class ChatAreaComponent implements OnInit {
-  @Input() randomSeed: string = "";
+export class ChatAreaComponent implements OnInit{
+  @Input() randomSeed: string;
   subs!: Subscription;
   paramValue: string = "";
-  roomName: string = "";
+  roomName: string;
   chatId: number;
 
   constructor(private commonService: CommonService,
               private messagesService: MessagesService,
-              private router: Router) {
+              private router: Router){
   }
 
 
@@ -30,8 +30,6 @@ export class ChatAreaComponent implements OnInit {
   ngOnInit(): void {
     this.subs = this.commonService.pathParam.subscribe(value => {
       this.paramValue = value;
-      // @ts-ignore
-      this.roomName = localStorage.getItem('userName')
     });
   }
 
@@ -56,10 +54,9 @@ export class ChatAreaComponent implements OnInit {
   }
 
   chatData(ev: any): void {
+    console.log('emit signal')
     if (ev.chatData !== undefined) {
-      ev.chatData.subscribe((roomName: string) => {
-        this.roomName = roomName
-      });
+      ev.chatData.subscribe((roomName: string) => this.roomName = roomName);
     }
   }
 }

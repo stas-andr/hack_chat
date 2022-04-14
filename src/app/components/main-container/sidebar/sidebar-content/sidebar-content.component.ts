@@ -26,5 +26,6 @@ export class SidebarContentComponent implements OnInit {
 
   onClick(): void {
     this.seedValue.emit(this.randomSeed);
+    console.log('emit onClick sidebar-content')
   }
 }
