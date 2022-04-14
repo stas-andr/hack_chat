@@ -6,6 +6,7 @@ import {Subscription} from 'rxjs';
 import {Message, User} from "../../../../services/common.service";
 import {MessagesService} from "../../../../services/messages.service";
 import {getMatIconFailedToSanitizeLiteralError} from "@angular/material/icon";
+import {ChatsService} from "../../../../services/chats.service";
 
 @Component({
   selector: 'app-chat-room',
@@ -22,6 +23,7 @@ export class ChatRoomComponent {
 
   constructor(private commonService: CommonService,
               private messagesService: MessagesService,
+              private chatsService: ChatsService,
               private route: ActivatedRoute) {
     // this.isUser = JSON.parse(localStorage.getItem('user')); //TODO
     this.getMessagesForIdChat(1)
@@ -41,6 +43,13 @@ export class ChatRoomComponent {
       }));
 
     this.subs.push(
+      this.route.params.subscribe(par => {
+        this.chatsService.getChatList().subscribe(data => {
+            this.item = data.list[par['id'] - 1]
+            this.chatData.emit(this.item.name);
+          }, error => console.log(error)
+        );
+      }),
       this.route.params.subscribe(par => {
           this.messages = []
           this.getMessagesForIdChat(par['id'])

@@ -46,7 +46,7 @@ export class SidebarComponent implements OnInit, OnDestroy {
   }
 
   private getChatList() {
-    this.chatsService.getCardList().subscribe(data => {
+    this.chatsService.getChatList().subscribe(data => {
         this.chats = data;
         localStorage.setItem('userName', this.chats.user_name)
         this.loggedUserName = this.chats.user_name

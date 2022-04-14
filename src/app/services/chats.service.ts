@@ -10,7 +10,7 @@ export class ChatsService {
   constructor(private httpClient: HttpClient,
               private commonService: CommonService) { }
 
-  getCardList(): Observable<Chats> {
+  getChatList(): Observable<Chats> {
     return this.httpClient.get<Chats>(`${this.commonService.getBaseUrl()}/chats`)
   }
 }

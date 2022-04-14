@@ -16,5 +16,6 @@ export class MainContainerComponent implements OnInit {
 
   seedData(ev: string): void {
     this.seedValue = ev;
+    console.log('emit main-container.component onClick')
   }
 }

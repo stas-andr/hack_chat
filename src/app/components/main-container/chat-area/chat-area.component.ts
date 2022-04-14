@@ -16,7 +16,7 @@ export class ChatAreaComponent implements OnInit{
   @Input() randomSeed: string;
   subs!: Subscription;
   paramValue: string = "";
-  roomName: string;
+  roomName: string | undefined;
   chatId: number;
 
   constructor(private commonService: CommonService,
@@ -30,6 +30,7 @@ export class ChatAreaComponent implements OnInit{
   ngOnInit(): void {
     this.subs = this.commonService.pathParam.subscribe(value => {
       this.paramValue = value;
+
     });
   }
 
@@ -53,10 +54,10 @@ export class ChatAreaComponent implements OnInit{
     form.resetForm();
   }
 
-  chatData(ev: any): void {
-    console.log('emit signal')
-    if (ev.chatData !== undefined) {
-      ev.chatData.subscribe((roomName: string) => this.roomName = roomName);
+  public chatData(event: any) {
+    console.log('receive signal chat-area')
+    if (event.chatData !== undefined) {
+      event.chatData.subscribe((roomName: string) => this.roomName = roomName);
     }
   }
 }
